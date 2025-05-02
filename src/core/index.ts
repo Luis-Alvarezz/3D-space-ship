@@ -55,7 +55,7 @@ export class App {
         this.perspectiveCamera.lookAt(0, 0,  0); // * lookAt: punto hacia donde mira la camara
     }
 
-    private onRize(): void {
+    private onRize() : void {
         this.renderer.setSize(window.innerWidth, window.innerHeight); // * Para ajuete de pantallas de manera responsiva
         this.perspectiveCamera.updateProjectionMatrix();
     }
