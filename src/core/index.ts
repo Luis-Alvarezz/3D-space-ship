@@ -20,6 +20,7 @@ export class App {
       this.createLights();
       this.config();
       this.createInstence();
+      window.addEventListener('resize', this.onRize.bind(this));
     }
 
 
@@ -52,5 +53,10 @@ export class App {
         // ? Ubicacion de la camara:
         this.perspectiveCamera.position.set(0, 8, -10);
         this.perspectiveCamera.lookAt(0, 0,  0); // * lookAt: punto hacia donde mira la camara
+    }
+
+    private onRize(): void {
+        this.renderer.setSize(window.innerWidth, window.innerHeight); // * Para ajuete de pantallas de manera responsiva
+        this.perspectiveCamera.updateProjectionMatrix();
     }
   }
