@@ -13,6 +13,7 @@ export class CameraController {
         const rotateOffset = this.offset.clone().applyQuaternion(this.SpaceShip.model.quaternion); // * clone: copia del vector | * applyQuaternion: rotacion del vector
         const desiredPosition = this.SpaceShip.model.position.clone().add(rotateOffset);
 
+        // * Traslado de camara
         this.perpectiveCamera.position.lerp(desiredPosition, .02); // * lerp: interpolar entre dos puntos | * 0.02: velocidad de la camara
         this.perpectiveCamera.lookAt(this.SpaceShip.model.position);
     }

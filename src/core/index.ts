@@ -6,6 +6,8 @@ import { CameraController } from './camera.controller';
 // const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 
 export class App {
+    private declare static instance: App; // * instance: instancia de la clase App 
+
     private readonly canvas = document.getElementById('canvas') as HTMLCanvasElement;
     private readonly scene = new Scene();
     private readonly renderer = new WebGLRenderer({ canvas: this.canvas, antialias: true }); // * antialias: suaviza los bordes de los objetos
@@ -14,13 +16,20 @@ export class App {
     private readonly spaceShip = new Spaceship(this.scene, this.inputController, 0.2);
     private readonly cameraController = new CameraController(this.perspectiveCamera, this.spaceShip);
   
-    constructor() {
+    private constructor() {
       // console.log('Hola desde Main.ts');
       this.animate();
       this.createLights();
       this.config();
       this.createInstence();
       window.addEventListener('resize', this.onRize.bind(this));
+    }
+
+    public static start(): void {
+      if (App.instance) 
+        return;
+      console.log('Hola desde App Start')
+      App.instance = new App();
     }
 
 
