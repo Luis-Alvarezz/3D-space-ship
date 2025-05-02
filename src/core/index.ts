@@ -28,7 +28,7 @@ export class App {
     public static start(): void {
       if (App.instance) 
         return;
-      console.log('Hola desde App Start')
+    //   console.log('Hola desde App Start')
       App.instance = new App();
     }
 
